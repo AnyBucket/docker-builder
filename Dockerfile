@@ -8,9 +8,7 @@ RUN apt-get install -y nginx supervisor
 # Configure nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN rm -f /etc/nginx/sites-enabled/*
-ADD nginx.conf /etc/nginx/sites-enabled/builder.conf
-# If using a load balancer that offloads SSL and want to enforce SSL, comment out the following line
-# ADD nginx-sslredirect.conf /etc/nginx/sites-enabled/builder.conf
+ADD nginx-sslredirect.conf /etc/nginx/sites-enabled/builder.conf
 
 # Configure supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord-builder.conf
